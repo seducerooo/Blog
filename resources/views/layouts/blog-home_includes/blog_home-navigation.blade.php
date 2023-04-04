@@ -6,21 +6,26 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Home
-                        <span class="sr-only">(current)</span>
-                    </a>
+            @if (Route::has('login'))
+                @auth
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url('/')}}">login</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">About</a>
+                            <a class="nav-link" href="{{ route('admin.dashboard')}}">Dashboard</a>
                 </li>
+                @else
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Services</a>
+                    <a class="nav-link" href="{{ route('login') }}">login</a>
                 </li>
+                @if (Route::has('register'))
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Contact</a>
+                    <a class="nav-link" href="{{ route('register') }}">register</a>
                 </li>
+                @endif
+                @endauth
             </ul>
+            @endif
         </div>
     </div>
 </nav>
