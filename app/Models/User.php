@@ -17,7 +17,9 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
+    protected $table = 'users';
     protected $fillable = [
+        'role_id',
         'name',
         'email',
         'password',
@@ -41,4 +43,10 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    public function posts(){
+        return $this->hasMany(Post::class);
+    }
+    public function post(){
+        return $this->hasOne(Post::class);
+    }
 }
