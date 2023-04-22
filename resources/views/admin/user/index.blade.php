@@ -46,7 +46,7 @@
 
                         <td>{{ $user->id }}</td>
                         <td>{{ $user->name }}</td>
-                        <td>user</td>
+                        <td>{{ $user->role->name }}</td>
                         <td>
 {{--                            <form method="post" action="{{ route('user.edit',['id' => $user->id]) }}">--}}
 {{--                                @csrf--}}

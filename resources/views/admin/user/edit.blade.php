@@ -6,6 +6,14 @@
         @csrf
         @method('PUT')
         <div class="mb-3">
+            <select name="role_id" class="form-select" aria-label="Default select example">
+                <option selected>roles</option>
+                @foreach($roles as $role)
+                    <option value="{{$role->id}}"> {{ $role->name }} </option>
+                @endforeach
+            </select>
+        </div>
+        <div class="mb-3">
             <label for="name" class="form-label"><b>Name : </b></label>
             <input name="name" class="form-control" type="text" id="name" value="{{ $user['name'] }}">
         </div>

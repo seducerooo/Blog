@@ -4,6 +4,7 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreUserRequest;
+use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -59,8 +60,9 @@ class UserController extends Controller
     {
         //
         $users =  User::query()->where('id',$id)->get()->all();
+        $roles =  Role::query()->get()->all();
 //        dd($user);
-        return view('admin.user.edit',compact('users'));
+        return view('admin.user.edit',['users' => $users , 'roles' => $roles]);
     }
 
     /**
@@ -71,11 +73,12 @@ class UserController extends Controller
     {
         //
         User::query()->update([
+            'role_id' => $request['role_id'],
             'name' => $request['name'],
             'email' => $request['email'],
             'password' => $request['password']
         ]);
-        return to_route('admin.index');
+        return to_route('user.index');
     }
 
     /**
