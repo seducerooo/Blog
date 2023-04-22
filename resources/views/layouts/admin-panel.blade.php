@@ -12,6 +12,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title>SB Admin 2 - Blank</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
     @include('layouts.admin-panel_includes.admin_panel-header')
     @yield('header')
 
@@ -35,7 +36,7 @@
 
         <!-- Nav Item - Dashboard -->
         <li class="nav-item">
-            <a class="nav-link" href="index.html">
+            <a class="nav-link" href="{{ route('admin.dashboard') }}">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
                 <span>Dashboard</span></a>
         </li>
@@ -49,11 +50,24 @@
         </div>
 
         <!-- Nav Item - Pages Collapse Menuu -->
-        @include('layouts.admin-panel_includes.nav_item.admin_panel-nav_item-collapse_menuu')
+{{--        @include('layouts.admin-panel_includes.nav_item.admin_panel-nav_item-collapse_menuu')--}}
 
-        <!-- Nav Item - Utilities Collapse Menu -->
-        @include('layouts.admin-panel_includes.nav_item.admin_panel-nav_item-utilities_collapse_menu')
+{{--        <!-- Nav Item - Utilities Collapse Menu -->--}}
+{{--        @include('layouts.admin-panel_includes.nav_item.admin_panel-nav_item-utilities_collapse_menu')--}}
 
+    <!-- Nav Item - Pages Collapse User -->
+    @include('layouts.admin-panel_includes.admin_panel-nav_item-collapse_user')
+
+
+    <!-- Nav Item - Pages Collapse Post -->
+    @include('layouts.admin-panel_includes.admin_panel-nav_item-collapse_post')
+
+    <!-- Nav Item - Pages Collapse Post -->
+    @include('layouts.admin-panel_includes.admin_panel-nav_item-collapse_role')
+
+
+    <!-- Nav Item - Pages Collapse Post -->
+    @include('layouts.admin-panel_includes.admin_panel-nav_item-collapse_permission')
         <!-- Divider -->
         <hr class="sidebar-divider">
 
@@ -149,7 +163,7 @@
 
 <!-- Logout Modal-->
 @include('layouts.admin-panel_includes.admin_panel-logout_modal')
-
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
 
 
 @yield('footer')

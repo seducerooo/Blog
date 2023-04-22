@@ -1,4 +1,7 @@
 // Call the dataTables jQuery plugin
 $(document).ready(function() {
-  $('#dataTable').DataTable();
+  $('#PostDataTable').DataTable();
+  $('#UserDataTable').DataTable();
+  $('#RoleDataTable').DataTable();
+  $('#PermissionDataTable').DataTable();
 });
