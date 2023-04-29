@@ -17,7 +17,11 @@
 
                 <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
                 <div class="text-right">
+                    @foreach($logged_user as $user)
+                        @can('create', $user)
                 <a href="{{ route('post.create') }}" class="btn btn-primary align-self-right">Create</a>
+                        @endcan
+                    @endforeach
                 </div>
             </div>
 
@@ -50,12 +54,17 @@
                             <td>{{ $post->title }}</td>
                             <td>{{ $post->content }}</td>
                             <td>
+                                @can('isAdmin',$user)
+
                                 <a class="btn btn-warning" href="{{ route('post.edit',$post->id) }}">EDIT</a>
+
                                 <form  method="POST" action="{{ route('post.delete',['post' => $post->id] ) }}" >
                                     @csrf
                                     @method('DELETE')
                                     <input class="btn btn-danger type=" type="submit" value="DELETE">
                                 </form>
+
+                                @endcan
 
                             </td>
                         </tr>

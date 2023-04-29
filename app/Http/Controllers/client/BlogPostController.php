@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\client;
 
 use App\Http\Controllers\Controller;
+use App\Models\Post;
 use Illuminate\Http\Request;
 
 class BlogPostController extends Controller
@@ -14,7 +15,8 @@ class BlogPostController extends Controller
     public function index()
     {
         //
-        return view('client.blog_home');
+        $posts = Post::query()->get()->all();
+        return view('client.blog_home',['posts' => $posts]);
     }
 
     /**
@@ -39,6 +41,8 @@ class BlogPostController extends Controller
     public function show(string $id)
     {
         //
+        $post = Post::query()->findOrFail($id);
+        return view('client.blog_post',['post' => $post]);
     }
 
     /**

@@ -26,7 +26,9 @@
             <input name="password" class="form-control" type="text" id="password">
         </div>
         <div class="mb-3">
+            @can('update', $user)
             <input type="submit" class="btn btn-primary" value="Update">
+            @endcan
         </div>
 
     </form>

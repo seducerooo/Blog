@@ -17,8 +17,10 @@ class PostController extends Controller
     public function index()
     {
         //
+
+        $logged_user = User::query()->findOrFail(Auth::id());
         $posts = Post::query()->get()->all();
-        return view('admin.post.index',compact('posts'));
+        return view('admin.post.index',['posts' => $posts,'logged_user' => $logged_user]);
     }
 
     /**

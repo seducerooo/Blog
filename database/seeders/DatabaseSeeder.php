@@ -67,13 +67,20 @@ class DatabaseSeeder extends Seeder
         ]);
         DB::table('permissions')->insert([
             'id' => 3,
+            'name' => 'User_View',
+            'slug' => 'user_view',
+            'created_at' => Carbon::now(),
+            'updated_at'=> Carbon::now()
+        ]);
+        DB::table('permissions')->insert([
+            'id' => 4,
             'name' => 'User_Update',
             'slug' => 'user_update',
             'created_at' => Carbon::now(),
             'updated_at'=> Carbon::now()
         ]);
         DB::table('permissions')->insert([
-            'id' => 4,
+            'id' => 5,
             'name' => 'User_Delete',
             'slug' => 'user_delete',
             'created_at' => Carbon::now(),
@@ -82,28 +89,35 @@ class DatabaseSeeder extends Seeder
 
 
         DB::table('permissions')->insert([
-            'id' => 5,
+            'id' => 6,
             'name' => 'Admin_Create',
             'slug' => 'admin_create',
             'created_at' => Carbon::now(),
             'updated_at'=> Carbon::now()
         ]);
         DB::table('permissions')->insert([
-            'id' => 6,
+            'id' => 7,
             'name' => 'Admin_Read',
             'slug' => 'admin_read',
             'created_at' => Carbon::now(),
             'updated_at'=> Carbon::now()
         ]);
         DB::table('permissions')->insert([
-            'id' => 7,
+            'id' => 8,
+            'name' => 'Admin_View',
+            'slug' => 'admin_view',
+            'created_at' => Carbon::now(),
+            'updated_at'=> Carbon::now()
+        ]);
+        DB::table('permissions')->insert([
+            'id' => 9,
             'name' => 'Admin_Update',
             'slug' => 'admin_update',
             'created_at' => Carbon::now(),
             'updated_at'=> Carbon::now()
         ]);
         DB::table('permissions')->insert([
-            'id' => 8,
+            'id' => 10,
             'name' => 'Admin_Delete',
             'slug' => 'admin_delete',
             'created_at' => Carbon::now(),
@@ -113,28 +127,35 @@ class DatabaseSeeder extends Seeder
 
 
         DB::table('permissions')->insert([
-            'id' => 9,
+            'id' => 11,
             'name' => 'Editor_Create',
             'slug' => 'editor_create',
             'created_at' => Carbon::now(),
             'updated_at'=> Carbon::now()
         ]);
         DB::table('permissions')->insert([
-            'id' => 10,
+            'id' => 12,
             'name' => 'Editor_Read',
             'slug' => 'editor_read',
             'created_at' => Carbon::now(),
             'updated_at'=> Carbon::now()
         ]);
         DB::table('permissions')->insert([
-            'id' => 11,
+            'id' => 13,
+            'name' => 'Editor_View',
+            'slug' => 'editor_view',
+            'created_at' => Carbon::now(),
+            'updated_at'=> Carbon::now()
+        ]);
+        DB::table('permissions')->insert([
+            'id' => 14,
             'name' => 'Editor_Update',
             'slug' => 'editor_update',
             'created_at' => Carbon::now(),
             'updated_at'=> Carbon::now()
         ]);
         DB::table('permissions')->insert([
-            'id' => 12,
+            'id' => 15,
             'name' => 'Editor_Delete',
             'slug' => 'editor_delete',
             'created_at' => Carbon::now(),
@@ -143,28 +164,35 @@ class DatabaseSeeder extends Seeder
 
 
         DB::table('permissions')->insert([
-            'id' => 13,
+            'id' => 16,
             'name' => 'Support_Create',
             'slug' => 'support_create',
             'created_at' => Carbon::now(),
             'updated_at'=> Carbon::now()
         ]);
         DB::table('permissions')->insert([
-            'id' => 14,
+            'id' => 17,
             'name' => 'Support_Read',
             'slug' => 'support_read',
             'created_at' => Carbon::now(),
             'updated_at'=> Carbon::now()
         ]);
         DB::table('permissions')->insert([
-            'id' => 15,
+            'id' => 18,
+            'name' => 'Support_View',
+            'slug' => 'support_View',
+            'created_at' => Carbon::now(),
+            'updated_at'=> Carbon::now()
+        ]);
+        DB::table('permissions')->insert([
+            'id' => 19,
             'name' => 'Support_Update',
             'slug' => 'support_update',
             'created_at' => Carbon::now(),
             'updated_at'=> Carbon::now()
         ]);
         DB::table('permissions')->insert([
-            'id' => 16,
+            'id' => 20,
             'name' => 'Support_Delete',
             'slug' => 'support_delete',
             'created_at' => Carbon::now(),

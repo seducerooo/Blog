@@ -7,7 +7,9 @@ use App\Http\Requests\StoreUserRequest;
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Testing\Fluent\Concerns\Has;
 
 class UserController extends Controller
 {
@@ -17,8 +19,9 @@ class UserController extends Controller
     public function index()
     {
         //
+        $logged_user = User::query()->findOrFail(Auth::id());
         $users = User::query()->get()->all();
-        return view('admin.user.index',['users' => $users]);
+        return view('admin.user.index',['users' => $users,'logged_user' => $logged_user]);
     }
 
     /**
@@ -69,15 +72,15 @@ class UserController extends Controller
      * Update the specified resource in storage.
      */
 
-    public function update(StoreUserRequest $request)
+    public function update(StoreUserRequest $request,string $id)
     {
         //
-        User::query()->update([
-            'role_id' => $request['role_id'],
-            'name' => $request['name'],
-            'email' => $request['email'],
-            'password' => $request['password']
-        ]);
+        $user = User::query()->findOrFail($id);
+        $user->role_id = $request['role_id'];
+        $user->name = $request['name'];
+        $user->email = $request['email'];
+        $user->password = Hash::make($request['password']);
+        $user->save();
         return to_route('user.index');
     }
 
