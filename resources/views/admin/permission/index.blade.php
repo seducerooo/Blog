@@ -56,7 +56,7 @@
                                 @method('DELETE')
                                 <input class="btn btn-danger" type="submit" value="DELETE">
                             </form>
-
+                            <a class="btn btn-primary" href="{{ route('permission.show',['id' => $permission->id]) }}">show</a>
                         </td>
 
                     </tr>

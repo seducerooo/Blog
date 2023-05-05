@@ -18,9 +18,9 @@ class PostController extends Controller
     {
         //
 
-        $logged_user = User::query()->findOrFail(Auth::id());
+        $user = User::query()->findOrFail(Auth::id());
         $posts = Post::query()->get()->all();
-        return view('admin.post.index',['posts' => $posts,'logged_user' => $logged_user]);
+        return view('admin.post.index',['posts' => $posts,'user' => $user]);
     }
 
     /**
@@ -58,9 +58,13 @@ class PostController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Post $post)
+    public function show(string $id)
     {
         //
+        $user = User::query()->findOrFail(Auth::id());
+        $posts = Post::query()->where('id',$id)->get()->all();
+        return view('admin.post.show',['posts' => $posts,'user' => $user]);
+
     }
 
     /**

@@ -4,7 +4,9 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
 {
@@ -14,7 +16,8 @@ class AdminController extends Controller
     public function index()
     {
         //
-        return view('admin.dashboard');
+        $user = User::query()->findOrFail(Auth::id());
+        return view('admin.dashboard',['user' => $user]);
     }
 
     /**

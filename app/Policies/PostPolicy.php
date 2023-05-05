@@ -41,7 +41,7 @@ class PostPolicy
     public function update(User $user,Role $role): bool
     {
         //
-echo 'hi';
+
     return auth()->user->role_id == Role::Is_Admin;
     }
 
@@ -52,7 +52,7 @@ echo 'hi';
     {
         //
 
-//        return $user?->role_id == Role::Is_Admin ;
+        return $user?->role_id == Role::Is_Admin ;
     }
 
     /**

@@ -16,13 +16,13 @@
         <div class="card-header py-3">
 
             <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
-            @foreach($logged_user as $user)
+
             @can('create', $user)
             <div class="text-right">
                 <a href="{{ route('user.create') }}" class="btn btn-primary align-self-right">Create</a>
             </div>
             @endcan
-            @endforeach
+
         </div>
 
         <div class="card-body">
@@ -67,7 +67,7 @@
                                 <button type="submit" class="btn btn-danger">Delete</button>
                             </form>
                             @endcan
-
+                            <a class="btn btn-primary" href="{{ route('user.show',['id' => $user->id]) }}">Show</a>
                         </td>
 
                     </tr>

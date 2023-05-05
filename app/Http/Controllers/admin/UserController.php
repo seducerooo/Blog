@@ -19,9 +19,9 @@ class UserController extends Controller
     public function index()
     {
         //
-        $logged_user = User::query()->findOrFail(Auth::id());
+        $user = User::query()->findOrFail(Auth::id());
         $users = User::query()->get()->all();
-        return view('admin.user.index',['users' => $users,'logged_user' => $logged_user]);
+        return view('admin.user.index',['users' => $users,'user' => $user]);
     }
 
     /**
@@ -30,7 +30,8 @@ class UserController extends Controller
     public function create()
     {
         //
-        return view('admin.user.create');
+        $user =  User::query()->findOrFail(Auth::id());
+        return view('admin.user.create',['user' => $user]);
     }
 
     /**
@@ -54,6 +55,9 @@ class UserController extends Controller
     public function show(string $id)
     {
         //
+        $user =  User::query()->findOrFail(Auth::id());
+        $users = User::query()->where('id',$id)->get()->all();
+        return view('admin.user.show',['user' => $user,'users' => $users]);
     }
 
     /**

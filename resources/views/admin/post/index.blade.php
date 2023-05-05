@@ -17,11 +17,11 @@
 
                 <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
                 <div class="text-right">
-                    @foreach($logged_user as $user)
-                        @can('create', $user)
+
+                        @can('create',$user)
                 <a href="{{ route('post.create') }}" class="btn btn-primary align-self-right">Create</a>
                         @endcan
-                    @endforeach
+
                 </div>
             </div>
 
@@ -63,6 +63,7 @@
                                     @method('DELETE')
                                     <input class="btn btn-danger type=" type="submit" value="DELETE">
                                 </form>
+                                <a class="btn btn-primary" href="{{ route('post.show',$post->id) }}">Show</a>
 
                                 @endcan
 
