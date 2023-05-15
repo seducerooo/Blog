@@ -4,6 +4,7 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreUserRequest;
+use App\Http\Requests\UpdateUserRequest;
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -63,28 +64,36 @@ class UserController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit($id)
+    public function edit(string $id)
     {
         //
+        $user = User::query()->findOrFail(Auth::id());
         $users =  User::query()->where('id',$id)->get()->all();
         $roles =  Role::query()->get()->all();
-//        dd($user);
-        return view('admin.user.edit',['users' => $users , 'roles' => $roles]);
+        return view('admin.user.edit',['users' => $users , 'roles' => $roles, 'user' => $user]);
     }
 
     /**
      * Update the specified resource in storage.
      */
 
-    public function update(StoreUserRequest $request,string $id)
+    public function update(string $id ,UpdateUserRequest $request)
     {
         //
+
         $user = User::query()->findOrFail($id);
         $user->role_id = $request['role_id'];
         $user->name = $request['name'];
         $user->email = $request['email'];
         $user->password = Hash::make($request['password']);
         $user->save();
+//        User::query()->update([
+//            'role_id' => $request['role_id'],
+//            'name' => $request['name'],
+//            'email' => $request['email'],
+//            'password' => Hash::make($request['password'])
+//        ]);
+
         return to_route('user.index');
     }
 

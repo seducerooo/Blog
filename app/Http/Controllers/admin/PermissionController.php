@@ -29,7 +29,8 @@ class PermissionController extends Controller
     public function create()
     {
         //
-        return view('admin.permission.create');
+        $user =  User::query()->findOrFail(Auth::id());
+        return view('admin.permission.create',['user' => $user]);
     }
 
     /**

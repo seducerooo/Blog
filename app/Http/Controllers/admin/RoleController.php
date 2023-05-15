@@ -31,7 +31,8 @@ class RoleController extends Controller
     public function create()
     {
         //
-        return view('admin.role.create');
+        $user =  User::query()->findOrFail(Auth::id());
+        return view('admin.role.create',[ 'user' => $user]);
     }
 
     /**
@@ -64,8 +65,9 @@ class RoleController extends Controller
     public function edit(string $id)
     {
         //
+        $user = User::query()->findOrFail(Auth::id());
         $roles =  Role::query()->where('id',$id)->get();
-        return view('admin.role.edit',['roles' => $roles]);
+        return view('admin.role.edit',['roles' => $roles,'user' => $user]);
     }
 
     /**

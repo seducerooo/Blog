@@ -17,11 +17,11 @@
 
             <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
 
-            @can('create', $user)
+
             <div class="text-right">
                 <a href="{{ route('user.create') }}" class="btn btn-primary align-self-right">Create</a>
             </div>
-            @endcan
+
 
         </div>
 
@@ -52,21 +52,14 @@
                         <td>{{ $user->name }}</td>
                         <td>{{ $user->role->name }}</td>
                         <td>
-{{--                            <form method="post" action="{{ route('user.edit',['id' => $user->id]) }}">--}}
-{{--                                @csrf--}}
-{{--                                @method('PUT')--}}
-{{--                                <button type="submit" class="btn btn-primary">Edit</button>--}}
-{{--                            </form>--}}
-                            @can('update', $user)
+
+
                             <a class="btn btn-primary" href="{{ route('user.edit',['id' => $user->id]) }}">Edit</a>
-                            @endcan
-                            @can('delete', $user)
+
                             <form method="post" action="{{ route('user.delete',['user' => $user->id]) }}">
                                 @csrf
-                                @method('DELETE')
                                 <button type="submit" class="btn btn-danger">Delete</button>
                             </form>
-                            @endcan
                             <a class="btn btn-primary" href="{{ route('user.show',['id' => $user->id]) }}">Show</a>
                         </td>
 

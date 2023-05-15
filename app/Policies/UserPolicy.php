@@ -5,6 +5,7 @@ namespace App\Policies;
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Auth\Access\Response;
+use Illuminate\Support\Facades\Auth;
 
 class UserPolicy
 {
@@ -14,6 +15,7 @@ class UserPolicy
     public function viewAny(User $user): bool
     {
         //
+
     }
 
     /**
@@ -22,6 +24,7 @@ class UserPolicy
     public function view(User $user, User $model): bool
     {
         //
+
     }
 
     /**
@@ -30,10 +33,9 @@ class UserPolicy
     public function create(User $user): bool
     {
         //
-        if ($user->role_id == Role::Is_Admin){
-            return 'true';
-        }
-        return 'false' ;
+
+
+
     }
 
     /**
@@ -42,7 +44,8 @@ class UserPolicy
     public function update(User $user): bool
     {
         //
-        return $user->role_id == Role::Is_Admin ;
+        return true;
+
     }
 
     /**
@@ -51,7 +54,7 @@ class UserPolicy
     public function delete(User $user): bool
     {
         //
-        return $user->role_id == Role::Is_Admin ;
+        return true;
     }
 
     /**
@@ -60,6 +63,7 @@ class UserPolicy
     public function restore(User $user): bool
     {
         //
+
     }
 
     /**
@@ -68,5 +72,6 @@ class UserPolicy
     public function forceDelete(User $user, User $model): bool
     {
         //
+
     }
 }

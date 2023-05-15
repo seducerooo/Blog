@@ -20,7 +20,7 @@ class PostController extends Controller
 
         $user = User::query()->findOrFail(Auth::id());
         $posts = Post::query()->get()->all();
-        return view('admin.post.index',['posts' => $posts,'user' => $user]);
+        return view('admin.post.index',['posts' => $posts , 'user' => $user]);
     }
 
     /**
@@ -29,7 +29,8 @@ class PostController extends Controller
     public function create()
     {
         //
-        return view('admin.post.create');
+        $user = User::query()->findOrFail(Auth::id());
+        return view('admin.post.create',['user' => $user]);
     }
 
     /**

@@ -1,6 +1,6 @@
 @extends('layouts.admin-panel')
 @section('content')
-    <h1 class="h3 mb-4 text-gray-800">Create Role</h1>
+    <h1 class="h3 mb-4 text-gray-800">Create Post</h1>
     <form class="row g-3" method="POST" action="{{ route('post.store') }}" enctype="multipart/form-data">
         @csrf
         <div class="mb-3">

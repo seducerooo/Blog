@@ -18,12 +18,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth')->controller(AdminController::class)->group(function () {
+Route::middleware(['auth','can:isAdmin'])->controller(AdminController::class)->group(function () {
     Route::get('/admin/dashboard','index')->name('admin.dashboard');
 
 });
 
-Route::middleware(['auth','can:isAdmin'])->controller(PostController::class)->group(function () {
+Route::middleware(['auth'])->controller(PostController::class)->group(function () {
     Route::get('/admin/posts','index')->name('post.index');
     Route::get('/admin/posts/create','create')->name('post.create');
     Route::get('/admin/posts/{id}/show','show')->name('post.show');
@@ -34,14 +34,14 @@ Route::middleware(['auth','can:isAdmin'])->controller(PostController::class)->gr
 
 
 });
-Route::middleware(['auth','can:isAdmin'])->controller(UserController::class)->group(function () {
+Route::middleware(['auth'])->controller(UserController::class)->group(function () {
     Route::get('/admin/users','index')->name('user.index');
     Route::get('/admin/users/create','create')->name('user.create');
     Route::get('/admin/users/{id}/show','show')->name('user.show');
     Route::post('/admin/users/store','store')->name('user.store');
     Route::get('/admin/users/{id}/edit','edit')->name('user.edit');
     Route::put('/admin/users/{id}/update','update')->name('user.update');
-    Route::delete('/admin/users/{user}/delete','destroy')->name('user.delete');
+    Route::post('/admin/users/{user}/delete','destroy')->name('user.delete');
 });
 Route::middleware('auth')->controller(RoleController::class)->group(function () {
     Route::get('/admin/roles','index')->name('role.index');
