@@ -82,11 +82,12 @@ class UserController extends Controller
         //
 
         $user = User::query()->findOrFail($id);
+        dd($user);
         $user->role_id = $request['role_id'];
         $user->name = $request['name'];
         $user->email = $request['email'];
         $user->password = Hash::make($request['password']);
-        $user->save();
+        return $user->save();
 //        User::query()->update([
 //            'role_id' => $request['role_id'],
 //            'name' => $request['name'],
@@ -94,7 +95,7 @@ class UserController extends Controller
 //            'password' => Hash::make($request['password'])
 //        ]);
 
-        return to_route('user.index');
+//        return to_route('user.index');
     }
 
     /**
