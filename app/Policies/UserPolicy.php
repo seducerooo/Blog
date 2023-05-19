@@ -15,7 +15,7 @@ class UserPolicy
     public function viewAny(User $user): bool
     {
         //
-
+return true;
     }
 
     /**
@@ -24,7 +24,7 @@ class UserPolicy
     public function view(User $user, User $model): bool
     {
         //
-
+return true;
     }
 
     /**
@@ -34,7 +34,7 @@ class UserPolicy
     {
         //
 
-
+return true;
 
     }
 
@@ -63,6 +63,7 @@ class UserPolicy
     public function restore(User $user): bool
     {
         //
+        return true;
 
     }
 
@@ -72,6 +73,7 @@ class UserPolicy
     public function forceDelete(User $user, User $model): bool
     {
         //
+        return true;
 
     }
 }

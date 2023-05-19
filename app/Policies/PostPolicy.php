@@ -23,7 +23,12 @@ class PostPolicy
     public function view(User $user, Post $post): bool
     {
         //
-        return $user->id == $post->user_id;
+        if ( $post->user_id === $user->id ||  $user->role_id === Role::Is_Editor ||
+            $user->role_id === Role::Is_Support || $user->role_id === Role::Is_Admin){
+            return true;
+        }else{
+            return false;
+        }
     }
 
     /**
@@ -42,7 +47,11 @@ class PostPolicy
     {
         //
 
-    return $user->role_id == Role::Is_Admin;
+        if ( $user->role_id === Role::Is_Editor || $user->role_id === Role::Is_Admin){
+            return true;
+        }else{
+            return false;
+        }
     }
 
     /**

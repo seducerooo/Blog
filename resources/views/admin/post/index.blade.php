@@ -54,11 +54,11 @@
                             <td>{{ $post->title }}</td>
                             <td>{{ $post->content }}</td>
                             <td>
-                                @can('update',$user)
+                                @can('update',$post)
 
                                 <a class="btn btn-warning" href="{{ route('post.edit',$post->id) }}">EDIT</a>
                                 @endcan
-                                @can('update',$user)
+                                @can('delete',$post)
                                 <form  method="POST" action="{{ route('post.delete',['post' => $post->id] ) }}" >
                                     @csrf
                                     @method('DELETE')

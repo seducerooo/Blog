@@ -2,10 +2,10 @@
 @section('content')
     <h1 class="h3 mb-4 text-gray-800">Edit User</h1>
     @foreach($users as $user)
-    <form class="row g-3" method="POST" action="{{ route('user.update',['id' => $user['id']]) }}">
+    <form class="row g-3" method="POST" action="{{ route('user.update',['user' => $user->id]) }}">
 
         @csrf
-        @method('PUT')
+        @method('put')
         <div class="mb-3">
             <select name="role_id" class="form-select" aria-label="Default select example">
                 <option selected>roles</option>

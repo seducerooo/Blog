@@ -20,9 +20,9 @@ class UserController extends Controller
     public function index()
     {
         //
-        $user = User::query()->findOrFail(Auth::id());
+
         $users = User::query()->get()->all();
-        return view('admin.user.index',['users' => $users,'user' => $user]);
+        return view('admin.user.index',['users' => $users]);
     }
 
     /**
@@ -31,7 +31,7 @@ class UserController extends Controller
     public function create()
     {
         //
-        $user =  User::query()->findOrFail(Auth::id());
+        $user = User::query()->findOrFail(Auth::id());
         return view('admin.user.create',['user' => $user]);
     }
 
@@ -67,27 +67,33 @@ class UserController extends Controller
     public function edit(string $id)
     {
         //
-        $user = User::query()->findOrFail(Auth::id());
+        $user =  User::query()->findOrFail(Auth::id());
         $users =  User::query()->where('id',$id)->get()->all();
         $roles =  Role::query()->get()->all();
-        return view('admin.user.edit',['users' => $users , 'roles' => $roles, 'user' => $user]);
+        return view('admin.user.edit',['users' => $users , 'roles' => $roles,'user' => $user]);
     }
 
     /**
      * Update the specified resource in storage.
      */
 
-    public function update(string $id ,UpdateUserRequest $request)
+    public function update(User $user,UpdateUserRequest $request)
     {
         //
 
-        $user = User::query()->findOrFail($id);
-        dd($user);
-        $user->role_id = $request['role_id'];
-        $user->name = $request['name'];
-        $user->email = $request['email'];
-        $user->password = Hash::make($request['password']);
-        return $user->save();
+        $user->update([
+            'role_id' => $request['role_id'],
+            'name' => $request['name'],
+            'email' => $request['email'],
+            'password' => Hash::make($request['password'])
+        ]);
+        return to_route('user.index');
+//        $user = User::find($id);
+//        $user->role_id = $request['role_id'];
+//        $user->name = $request['name'];
+//        $user->email = $request['email'];
+//        $user->password = Hash::make($request['password']);
+//        return to_route('user.index');
 //        User::query()->update([
 //            'role_id' => $request['role_id'],
 //            'name' => $request['name'],
@@ -95,7 +101,7 @@ class UserController extends Controller
 //            'password' => Hash::make($request['password'])
 //        ]);
 
-//        return to_route('user.index');
+
     }
 
     /**

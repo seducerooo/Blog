@@ -54,7 +54,7 @@
                         <td>
 
 
-                            <a class="btn btn-primary" href="{{ route('user.edit',['id' => $user->id]) }}">Edit</a>
+                            <a class="btn btn-primary" href="{{ route('user.edit',['user' => $user->id]) }}">Edit</a>
 
                             <form method="post" action="{{ route('user.delete',['user' => $user->id]) }}">
                                 @csrf

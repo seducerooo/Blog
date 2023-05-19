@@ -29,7 +29,7 @@ class UpdateUserRequest extends FormRequest
             //
             'role_id' => 'required',
             'name' => 'required',
-            'email' => 'required|unique:users|email',
+            'email' => 'required|email',
             'password' => 'required|min:3'
         ];
     }
