@@ -47,10 +47,10 @@
             @include('layouts.blog-home_includes.blog_home-search_widget')
 
             <!-- Categories Widget -->
-            @include('layouts.blog-home_includes.blog_home-categories_widget')
+{{--            @include('layouts.blog-home_includes.blog_home-categories_widget')--}}
 
             <!-- Side Widget -->
-            @include('layouts.blog-home_includes.blog_home-side_widget')
+{{--            @include('layouts.blog-home_includes.blog_home-side_widget')--}}
 
         </div>
 

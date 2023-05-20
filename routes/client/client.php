@@ -22,3 +22,5 @@ Auth::routes();
 Route::get('/', [BlogPostController::class, 'index'])->name('home');
 
 Route::get('/client/posts/{id}/show', [BlogPostController::class, 'show'])->name('client.post.show');
+
+
