@@ -64,6 +64,7 @@
                                 @method('DELETE')
                                 <input type="submit" class="btn btn-danger" value="DELETE">
                             </form>
+                            <a class="btn btn-primary" href="{{ route('role.show',['id' =>$role->id]) }}">Show</a>
                             <a class="btn btn-primary" href="{{ route('role.modify.attach',['id' =>$role->id]) }}">Attach</a>
                             <a class="btn btn-danger" href="{{ route('role.modify.detach',['id' => $role->id]) }}">Detach</a>
                         </td>

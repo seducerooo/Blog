@@ -8,7 +8,9 @@ use App\Http\Requests\StoreRoleRequest;
 use App\Http\Requests\UpdateRoleRequest;
 use App\Models\Permission;
 use App\Models\Role;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class RoleController extends Controller
 {
@@ -18,8 +20,9 @@ class RoleController extends Controller
     public function index()
     {
         //
+        $user =  User::query()->findOrFail(Auth::id());
         $roles =  Role::query()->get()->all();
-        return view('admin.role.index',['roles' => $roles]);
+        return view('admin.role.index',['roles' => $roles,'user' => $user]);
     }
 
     /**
@@ -28,7 +31,8 @@ class RoleController extends Controller
     public function create()
     {
         //
-        return view('admin.role.create');
+        $user =  User::query()->findOrFail(Auth::id());
+        return view('admin.role.create',[ 'user' => $user]);
     }
 
     /**
@@ -47,9 +51,12 @@ class RoleController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Role $role)
+    public function show(string $id)
     {
         //
+        $user = User::query()->findOrFail(Auth::id());
+        $roles = Role::query()->where('id',$id)->get()->all();
+        return view('admin.role.show',['roles' => $roles,'user' => $user]);
     }
 
     /**
@@ -58,8 +65,9 @@ class RoleController extends Controller
     public function edit(string $id)
     {
         //
+        $user = User::query()->findOrFail(Auth::id());
         $roles =  Role::query()->where('id',$id)->get();
-        return view('admin.role.edit',['roles' => $roles]);
+        return view('admin.role.edit',['roles' => $roles,'user' => $user]);
     }
 
     /**
@@ -86,9 +94,10 @@ class RoleController extends Controller
     }
 
     public function  modify_attach(string $id){
+        $user = User::query()->findOrFail(Auth::id());
         $role = Role::query()->where('id',$id)->get()->all();
         $permissions =  Permission::query()->get()->all();
-        return view('admin.role.attach-modify',['permissions' => $permissions,'role'=> $role]);
+        return view('admin.role.attach-modify',['permissions' => $permissions,'role'=> $role,'user'=> $user]);
     }
 
     public function attach(string $id,Request $request){
@@ -99,9 +108,10 @@ class RoleController extends Controller
     }
 
     public function modify_detach(string $id){
+        $user = User::query()->findOrFail(Auth::id());
         $role = Role::query()->where('id',$id)->get()->all();
         $permissions =  Permission::query()->get()->all();
-        return view('admin.role.detach-modify',['permissions' => $permissions,'role'=> $role]);
+        return view('admin.role.detach-modify',['permissions' => $permissions,'role'=> $role,'user'=> $user]);
     }
     public function detach(string $id, Request $request){
         $permission_id =  $request['permission_id'];

@@ -16,9 +16,13 @@
         <div class="card-header py-3">
 
             <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+
+
             <div class="text-right">
                 <a href="{{ route('user.create') }}" class="btn btn-primary align-self-right">Create</a>
             </div>
+
+
         </div>
 
         <div class="card-body">
@@ -46,21 +50,17 @@
 
                         <td>{{ $user->id }}</td>
                         <td>{{ $user->name }}</td>
-                        <td>user</td>
+                        <td>{{ $user->role->name }}</td>
                         <td>
-{{--                            <form method="post" action="{{ route('user.edit',['id' => $user->id]) }}">--}}
-{{--                                @csrf--}}
-{{--                                @method('PUT')--}}
-{{--                                <button type="submit" class="btn btn-primary">Edit</button>--}}
-{{--                            </form>--}}
-                            <a class="btn btn-primary" href="{{ route('user.edit',['id' => $user->id]) }}">Edit</a>
+
+
+                            <a class="btn btn-primary" href="{{ route('user.edit',['user' => $user->id]) }}">Edit</a>
 
                             <form method="post" action="{{ route('user.delete',['user' => $user->id]) }}">
                                 @csrf
-                                @method('DELETE')
                                 <button type="submit" class="btn btn-danger">Delete</button>
                             </form>
-
+                            <a class="btn btn-primary" href="{{ route('user.show',['id' => $user->id]) }}">Show</a>
                         </td>
 
                     </tr>

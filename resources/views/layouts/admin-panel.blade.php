@@ -107,18 +107,13 @@
 
                 <!-- Sidebar Toggle (Topbar) -->
                 @include('layouts.admin-panel_includes.admin_panel-sidebar_toggle')
-                <!-- Topbar Search -->
-                @include('layouts.admin-panel_includes.admin_panel-top_search')
+
                 <!-- Topbar Navbar -->
                 <ul class="navbar-nav ml-auto">
 
                     <!-- Nav Item - Search Dropdown (Visible Only XS) -->
                     @include('layouts.admin-panel_includes.nav_item.admin_panel-nav_item-search_dropdown')
-                    <!-- Nav Item - Alerts -->
-                    @include('layouts.admin-panel_includes.nav_item.admin_panel-nav_item-alerts')
 
-                    <!-- Nav Item - Messages -->
-                    @include('layouts.admin-panel_includes.nav_item.admin_panel-nav_item-messages')
 
                     <div class="topbar-divider d-none d-sm-block"></div>
 

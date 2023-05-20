@@ -20,4 +20,11 @@ class Role extends Model
     public function permission(){
         return $this->belongsTo(Permission::class);
     }
+    public function users(){
+        return $this->hasMany(User::class);
+    }
+    public const Is_User = 1;
+    public const Is_Admin = 2;
+    public const Is_Editor = 3;
+    public const Is_Support = 4;
 }

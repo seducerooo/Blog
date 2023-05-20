@@ -24,7 +24,7 @@
 
                             </div>
                             <div class="form-group row">
-                                <input name="email" type="email" class="form-control form-control-user" id="email" value="{{ old('name') }}" placeholder="Email" required autocomplete="name" autofocus>
+                                <input name="email" type="email" class="form-control form-control-user @error('email') is-invalid @enderror" id="email" value="{{ old('name') }}" placeholder="Email" required autocomplete="name" autofocus>
                                 @error('email')
                                       <span class="invalid-feedback" role="alert">
                                           <strong>{{ $message }}</strong>
@@ -32,7 +32,7 @@
                                 @enderror
                             </div>
                             <div class="form-group row">
-                                    <input name="password" type="password" class="form-control form-control-user" id="password" placeholder="Password">
+                                    <input name="password" type="password" class="form-control form-control-user @error('password') is-invalid @enderror" id="password" placeholder="Password">
                                     @error('password')
                                            <span class="invalid-feedback" role="alert">
                                                  <strong>{{ $message }}</strong>
@@ -47,13 +47,7 @@
                             <button class="btn btn-primary btn-user btn-block">
                                 {{ __('Register') }}
                             </button>
-                            <hr>
-                            <a href="index.html" class="btn btn-google btn-user btn-block">
-                                <i class="fab fa-google fa-fw"></i> Register with Google
-                            </a>
-                            <a href="index.html" class="btn btn-facebook btn-user btn-block">
-                                <i class="fab fa-facebook-f fa-fw"></i> Register with Facebook
-                            </a>
+
                         </form>
                         <hr>
                         <div class="text-center">

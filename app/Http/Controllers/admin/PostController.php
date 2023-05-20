@@ -17,8 +17,10 @@ class PostController extends Controller
     public function index()
     {
         //
+
+        $user = User::query()->findOrFail(Auth::id());
         $posts = Post::query()->get()->all();
-        return view('admin.post.index',compact('posts'));
+        return view('admin.post.index',['posts' => $posts , 'user' => $user]);
     }
 
     /**
@@ -27,7 +29,8 @@ class PostController extends Controller
     public function create()
     {
         //
-        return view('admin.post.create');
+        $user = User::query()->findOrFail(Auth::id());
+        return view('admin.post.create',['user' => $user]);
     }
 
     /**
@@ -56,9 +59,13 @@ class PostController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Post $post)
+    public function show(string $id)
     {
         //
+        $user = User::query()->findOrFail(Auth::id());
+        $posts = Post::query()->where('id',$id)->get()->all();
+        return view('admin.post.show',['posts' => $posts,'user' => $user]);
+
     }
 
     /**

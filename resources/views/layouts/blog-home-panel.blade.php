@@ -27,13 +27,12 @@
         <!-- Blog Entries Column -->
         <div class="col-md-8">
 
-            <h1 class="my-4">Page Heading
+            <h1 class="my-4">Posts
                 <small>Secondary Text</small>
             </h1>
 
 
             <!-- Blog Post -->
-            @include('layouts.blog-home_includes.blog_home-blog_post')
             @yield('content')
 
             <!-- Pagination -->

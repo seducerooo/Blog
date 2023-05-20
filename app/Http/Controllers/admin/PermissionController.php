@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StorePermissionRequest;
 use App\Http\Requests\UpdatePermissionRequest;
 use App\Models\Permission;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 
 class PermissionController extends Controller
@@ -16,8 +18,9 @@ class PermissionController extends Controller
     public function index()
     {
         //
+        $user = User::query()->findOrFail(Auth::id());
         $permissions = Permission::query()->get()->all();
-        return view('admin.permission.index',['permissions' => $permissions]);
+        return view('admin.permission.index',['permissions' => $permissions,'user' => $user]);
     }
 
     /**
@@ -26,7 +29,8 @@ class PermissionController extends Controller
     public function create()
     {
         //
-        return view('admin.permission.create');
+        $user =  User::query()->findOrFail(Auth::id());
+        return view('admin.permission.create',['user' => $user]);
     }
 
     /**
@@ -45,9 +49,12 @@ class PermissionController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Permission $permission)
+    public function show(string $id)
     {
         //
+        $permissions =  Permission::query()->where('id',$id)->get()->all();
+        $user = User::query()->findOrFail(Auth::id());
+        return view('admin.permission.show',['user' => $user,'permissions' => $permissions]);
     }
 
     /**

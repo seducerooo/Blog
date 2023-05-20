@@ -20,12 +20,12 @@
                                     @csrf
                                     <div class="form-group">
                                         <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email') }}</label>
-                                        <input name="email" type="email" id="email" class="form-control form-control-user"  aria-describedby="emailHelp" placeholder="Enter Email Address..." value="{{ old('email') }}" required autocomplete="email" autofocus>
-                                        @error('email')--}}
+                                        <input name="email" type="email" id="email" class="form-control form-control-user @error('email') is-invalid @enderror"  aria-describedby="emailHelp" placeholder="Enter Email Address..." value="{{ old('email') }}" required autocomplete="email" autofocus>
+
                                            <span class="invalid-feedback" role="alert">
-                                               <strong>{{ $message }}</strong>
+                                               <strong>bifdsifs</strong>
                                            </span>
-                                        @enderror
+
                                     </div>
 
 
