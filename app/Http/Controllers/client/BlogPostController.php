@@ -18,6 +18,16 @@ class BlogPostController extends Controller
         $posts = Post::query()->get()->all();
         return view('client.blog_home',['posts' => $posts]);
     }
+    public function search(Request $request){
+        $search_text = $request['query'];
+//        $searched_post = Post::query()->where('title','=' , $search_text )->get()->all();
+//        $searched_post = Post::query()->where('title' ,'LIKE', '%' , $search_text , '%')->get()->all();
+        $searched_post = Post::query()->when(request('query'),function($query){
+            $query->where('title','LIKE','%'.request('query').'%')
+            ->orWhere('content','LIKE','%'.request('query').'%');
+        })->paginate();
+        return view('client.blog_post-search',['searched_post' => $searched_post]);
+    }
 
     /**
      * Show the form for creating a new resource.
