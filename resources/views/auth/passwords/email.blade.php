@@ -20,8 +20,13 @@
                                 <form class="user"  method="POST" action="{{ route('password.email') }}">
                                     @csrf
                                     <div class="form-group">
-                                        <input type="email" class="form-control form-control-user @error('email') is-invalid @enderror" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Email Address..." required autocomplete="email" autofocus>
+                                        <input name="email" type="email" class="form-control form-control-user @error('email') is-invalid @enderror" id="exampleInputEmail" aria-describedby="emailHelp" value="{{ old('email') }}" placeholder="Enter Email Address..." required autocomplete="email" autofocus>
                                     </div>
+                                    @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
                                     <button  class="btn btn-primary btn-user btn-block">
                                         Reset Password
                                     </button>
